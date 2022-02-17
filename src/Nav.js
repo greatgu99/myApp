@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoginByPhone from './pages/login/LoginByPhone';
+import LoginByPhone from './pages/login/LoginByPhone/LoginByPhone';
 import LoginByAccount from './pages/login/LoginByAccount';
 // import Register from './pages/login/Register';
 import GetBackPassword from './pages/login/GetBackPassword';
@@ -31,7 +31,7 @@ const Stack = createNativeStackNavigator();
 function Nav() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='GetBackPassword'>
+      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='LoginByPhone'>
         <Stack.Screen name="LoginByPhone" component={LoginByPhone} />
         <Stack.Screen name="GetBackPassword" component={GetBackPassword} />
         <Stack.Screen name="LoginByAccount" component={LoginByAccount} />

@@ -1,11 +1,15 @@
 import React from "react";
-import { Viewl, Text, View } from "react-native";
-import { pxToDp } from "../../utils/stylesKits";
+import { Text, View } from "react-native";
+import { pxToDp } from "../../../utils/stylesKits";
 import { Input, Icon, Button } from "react-native-elements";
 import { useState } from "react";
-import validator from "../../utils/validator";
-import request from "../../utils/request";
-import { ACCOUNT_LOGINBYPHONE } from "../../utils/pathMap";
+import validator from "../../../utils/validator";
+import styles from "./LoginByPhoneStyle";
+// 下方引入用于之后的异步请求
+import request from "../../../utils/request";
+import { ACCOUNT_LOGINBYPHONE } from "../../../utils/pathMap";
+
+
 export default function LoginByPhone({ navigation }) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneValid, setPhoneValid] = useState(true);
@@ -31,7 +35,7 @@ export default function LoginByPhone({ navigation }) {
     <View>
       <View style={{ padding: pxToDp(20), paddingTop: pxToDp(40) }}>
         <Text
-          style={{ fontSize: pxToDp(25), color: "#444", fontWeight: "bold" }}
+          style={styles.titleStyle}
         >
           欢迎使用小程序
         </Text>
@@ -58,29 +62,16 @@ export default function LoginByPhone({ navigation }) {
             title="获取验证码"
             loading={loading}
             disabled={loading || phoneNumber == ""}
-            buttonStyle={{
+            buttonStyle={{...styles.buttonStyle,
               backgroundColor:
                 phoneNumber != "" ? "rgba(111, 202, 186, 1)" : "#ccc",
-              borderRadius: pxToDp(5),
-              height: pxToDp(50),
-              borderColor: "transparent",
             }}
-            titleStyle={{ fontWeight: "bold", fontSize: pxToDp(23) }}
-            containerStyle={{
-              marginHorizontal: pxToDp(50),
-              height: pxToDp(50),
-              width: pxToDp(335),
-              marginVertical: pxToDp(10),
-            }}
+            titleStyle={styles.btnTitleStyle}
+            containerStyle={styles.containerStyle}
             onPress={phoneNumberSubmitEditing}
           />
           <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              marginTop: pxToDp(5),
-              width: pxToDp(328),
-            }}
+            style={styles.bottomFont}
           >
             <View>
               <Text onPress={() => navigation.navigate("LoginByAccount")}>
